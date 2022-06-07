@@ -48,6 +48,15 @@
                     android:textStyle="bold"/>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manage Your Expenses"
+                android:textColor="#001764"
+                android:textAlignment="center"
+                android:textSize="20sp"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/r_name_layout"
                 android:layout_width="match_parent"
