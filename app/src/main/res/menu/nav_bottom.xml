@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item android:id="@+id/incomeFragment"
+        android:icon="@drawable/ic_income_btn"
+        android:title="Income" />
+    <item android:id="@+id/transactionsFragment"
+        android:icon="@drawable/ic_add_btn"
+        android:title="Transactions" />
+    <item android:id="@+id/expensesFragment"
+        android:icon="@drawable/ic_expense_btn"
+        android:title="Expenses" />
+    <item android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person"
+        android:title="Profile" />
+</menu>

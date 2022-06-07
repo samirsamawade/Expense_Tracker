@@ -1,3 +1,50 @@
 <resources>
-    <string name="app_name">Expense Tracker</string>
+    <string name="app_name">Expenso</string>
+    <string name="text_save_transaction">Save Transaction</string>
+    <string name="text_ui_mode">UI Mode</string>
+    <string name="text_total_income">TOTAL INCOME</string>
+    <string name="text_total_expense">TOTAL EXPENSE</string>
+    <string name="text_total_balance">TOTAL BALANCE</string>
+
+    <string name="total_income_format"></string>
+    <string name="total_expense_format"></string>
+    <string name="income_format"></string>
+    <string name="expense_format"></string>
+    <string name="total_balance_format"></string>
+
+    <string name="text_recent_transactions">Recent Transactions</string>
+    <string name="text_view_all">View all</string>
+    <string name="text_expense_when">When</string>
+    <string name="text_expense_amount">Amount</string>
+    <string name="text_expense_transaction_type">Transaction type</string>
+    <string name="text_expense_tag">Tag</string>
+    <string name="text_expense_note">Note</string>
+    <string name="text_expense_add_transaction">Save Transaction</string>
+    <string name="text_expense_update_transaction">Update Transaction</string>
+    <string name="text_expense_dollar">$</string>
+    <string name="success_expense_saved">Transaction saved successfully</string>
+    <string name="success_transaction_delete">Transaction deleted successfully!</string>
+    <string name="text_desc">Description</string>
+    <string name="text_about">About</string>
+    <string name="text_filter">Filter</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_createdAt">Created At</string>
+
+    <!--  About -->
+    <string name="text_about_license_title"><![CDATA[Attributions & License]]></string>
+    <string name="text_about_license">Licensed Under Apache 2.0 License</string>
+    <string name="text_about_visit_title">Visit</string>
+    <string name="text_about_visit_url"><u>https://github.com/Spikeysanju/Expenso</u></string>
+    <string name="text_app_version">v%s (%d)</string>
+    <string name="text_share_as_text">Share as Text</string>
+    <string name="text_share_as_image">Share as Image</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_share">Share</string>
+
+    <!-- share transaction -->
+    <string name="share_message">\%s \nAmount: %s, \nTransaction-Type: %s, \nTag: %s, \nDate: %s, \nNote: %s, \nCreatedAt: %s \n\nVisit: https://github.com/Spikeysanju/Expenso</string>
+    <string name="text_transaction_empty_title">No Transaction Yet!</string>
+    <string name="text_transaction_empty_desc">After your first transaction you will be able to view it here</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

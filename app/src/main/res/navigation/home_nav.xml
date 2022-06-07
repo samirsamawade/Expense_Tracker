@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.DashboardFragment"
+        android:label="fragment_dashboardragment"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" >
+        <action
+            android:id="@+id/action_incomeFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expensesFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.ExpensesFragment"
+        android:label="fragment_expenses"
+        tools:layout="@layout/fragment_expenses" >
+        <action
+            android:id="@+id/action_expensesFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.TransactionsFragment"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions" />
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.TransactionDetailFragment"
+        android:label="fragment_transaction_detail"
+        tools:layout="@layout/fragment_transaction_detail" >
+<!--        <argument-->
+<!--            android:name="transaction"-->
+<!--            app:argType="com.samawade.expensetracker.model.Info" />-->
+        <action
+            android:id="@+id/action_transactionDetailFragment_to_editTransactionFragment"
+            app:destination="@id/editTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTransactionFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.EditTransactionFragment"
+        android:label="fragment_edit_transaction"
+        tools:layout="@layout/fragment_edit_transaction" >
+<!--        <argument-->
+<!--            android:name="detail_desc"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="detail_amount"-->
+<!--            app:argType="string" />-->
+<!--        <argument android:name="detail_type"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="detail_date"-->
+<!--            app:argType="string" />-->
+<!--        <argument-->
+<!--            android:name="detail_id"-->
+<!--            app:argType="string" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.samawade.expensetracker.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
