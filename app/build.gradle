@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id "kotlin-kapt"
     id 'androidx.navigation.safeargs'
 }
 
@@ -60,11 +61,13 @@ dependencies {
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-
 
     // Architectural Components
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    //ViewModel and Livedata
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+
 
 // third party dependencies -------------------------------------------------------------------
     implementation 'com.mikhaellopez:circularimageview:3.2.0'          // circle image view

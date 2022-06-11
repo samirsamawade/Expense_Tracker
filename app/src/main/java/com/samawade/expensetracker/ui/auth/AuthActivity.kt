@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.ui
+package com.samawade.expensetracker.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
