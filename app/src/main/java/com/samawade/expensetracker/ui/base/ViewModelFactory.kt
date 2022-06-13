@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.ui.auth.base
+package com.samawade.expensetracker.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

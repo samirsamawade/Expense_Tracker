@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.ui.auth.base
+package com.samawade.expensetracker.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.samawade.expensetracker.data.UserPreferences
 import com.samawade.expensetracker.data.network.RemoteDataSource
 import com.samawade.expensetracker.data.repository.BaseRepository
 
 abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
 
+    protected lateinit var userPrerences: UserPreferences
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
     protected val remoteDataSource = RemoteDataSource()
@@ -22,6 +24,7 @@ abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: F
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        userPrerences = UserPreferences(requireContext())
         binding = getFragmentBinding(inflater, container)
         val factory= ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
