@@ -1,6 +1,6 @@
-package com.samawade.expensetracker.repository
+package com.samawade.expensetracker.data.repository
 
-import com.samawade.expensetracker.network.Resource
+import com.samawade.expensetracker.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

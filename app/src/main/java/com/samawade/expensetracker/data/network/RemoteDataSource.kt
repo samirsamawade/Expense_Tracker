@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.network
+package com.samawade.expensetracker.data.network
 
 //import androidx.viewbinding.BuildConfig
 import com.samawade.expensetracker.BuildConfig
@@ -6,7 +6,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class RemoteDataSource {
     companion object{

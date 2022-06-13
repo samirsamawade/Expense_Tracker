@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samawade.expensetracker.Model.Login
-import com.samawade.expensetracker.network.Resource
-import com.samawade.expensetracker.repository.AuthRepository
-import com.samawade.expensetracker.responses.LoginResponse
+import com.samawade.expensetracker.data.network.Resource
+import com.samawade.expensetracker.data.repository.AuthRepository
+import com.samawade.expensetracker.data.responses.LoginResponse
 import kotlinx.coroutines.launch
 
 class AuthViewModel(

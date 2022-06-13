@@ -2,8 +2,8 @@ package com.samawade.expensetracker.ui.auth.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.samawade.expensetracker.repository.AuthRepository
-import com.samawade.expensetracker.repository.BaseRepository
+import com.samawade.expensetracker.data.repository.AuthRepository
+import com.samawade.expensetracker.data.repository.BaseRepository
 import com.samawade.expensetracker.ui.auth.AuthViewModel
 
 class ViewModelFactory(

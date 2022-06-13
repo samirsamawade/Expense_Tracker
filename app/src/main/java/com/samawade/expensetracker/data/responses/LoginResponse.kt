@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.responses
+package com.samawade.expensetracker.data.responses
 
 data class LoginResponse(
     val id: String,

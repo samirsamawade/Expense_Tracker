@@ -1,18 +1,15 @@
 package com.samawade.expensetracker.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.samawade.expensetracker.Model.Login
-import com.samawade.expensetracker.R
 import com.samawade.expensetracker.databinding.FragmentLoginBinding
-import com.samawade.expensetracker.network.AuthApi
-import com.samawade.expensetracker.network.Resource
-import com.samawade.expensetracker.repository.AuthRepository
+import com.samawade.expensetracker.data.network.AuthApi
+import com.samawade.expensetracker.data.network.Resource
+import com.samawade.expensetracker.data.repository.AuthRepository
 import com.samawade.expensetracker.ui.auth.base.BaseFragment
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {

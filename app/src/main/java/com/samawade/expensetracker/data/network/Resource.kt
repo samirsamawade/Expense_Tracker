@@ -1,4 +1,4 @@
-package com.samawade.expensetracker.network
+package com.samawade.expensetracker.data.network
 
 import okhttp3.ResponseBody
 

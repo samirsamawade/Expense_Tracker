@@ -1,11 +1,8 @@
-package com.samawade.expensetracker.network
+package com.samawade.expensetracker.data.network
 
 import com.samawade.expensetracker.Model.Login
-import com.samawade.expensetracker.responses.LoginResponse
-import retrofit2.Response
+import com.samawade.expensetracker.data.responses.LoginResponse
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface AuthApi {

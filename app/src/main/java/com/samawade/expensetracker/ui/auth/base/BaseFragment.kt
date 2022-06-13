@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.samawade.expensetracker.network.RemoteDataSource
-import com.samawade.expensetracker.repository.BaseRepository
+import com.samawade.expensetracker.data.network.RemoteDataSource
+import com.samawade.expensetracker.data.repository.BaseRepository
 
 abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
 

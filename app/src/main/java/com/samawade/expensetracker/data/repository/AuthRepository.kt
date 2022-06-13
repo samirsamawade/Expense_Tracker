@@ -1,7 +1,7 @@
-package com.samawade.expensetracker.repository
+package com.samawade.expensetracker.data.repository
 
 import com.samawade.expensetracker.Model.Login
-import com.samawade.expensetracker.network.AuthApi
+import com.samawade.expensetracker.data.network.AuthApi
 
 class AuthRepository(
     private val api: AuthApi
