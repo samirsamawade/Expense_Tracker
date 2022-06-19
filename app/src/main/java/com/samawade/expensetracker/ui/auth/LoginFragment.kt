@@ -12,11 +12,8 @@ import com.samawade.expensetracker.databinding.FragmentLoginBinding
 import com.samawade.expensetracker.data.network.AuthApi
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.data.repository.AuthRepository
-import com.samawade.expensetracker.ui.DashboardActivity
+import com.samawade.expensetracker.ui.*
 import com.samawade.expensetracker.ui.base.BaseFragment
-import com.samawade.expensetracker.ui.enable
-import com.samawade.expensetracker.ui.startNewActivity
-import com.samawade.expensetracker.ui.visible
 import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
@@ -28,33 +25,32 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         binding.buttonLogin.enable(false)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
-            binding.progressBar.visible(false)
+            binding.progressBar.visible(it is Resource.Loading)
             when(it){
                 is Resource.Success -> {
-
-                        viewModel.saveAuthToken(it.value.token, it.value.id)
+                    lifecycleScope.launch {
+                        viewModel.saveAuthToken(it.value.token!!, it.value.id!!)
                         requireActivity().startNewActivity(DashboardActivity::class.java)
+                    }
 
                 }
-                is Resource.Failure -> {
-                    Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
-                }
+                is Resource.Failure -> handleApiError(it)
             }
         })
 
         binding.apply {
 
             editTextPass.addTextChangedListener {
-                val username = editTextUsername.text.toString()
-                buttonLogin.enable(username.isNotEmpty() && it.toString().isNotEmpty())
+                val username = editTextUsername.text.toString().trim()
+                buttonLogin.enable(username.isNotEmpty() && it.toString().trim().isNotEmpty())
             }
 
             buttonLogin.setOnClickListener {
-                val username = editTextUsername.text.toString()
-                val password = editTextPass.text.toString()
+                val username = editTextUsername.text.toString().trim()
+                val password = editTextPass.text.toString().trim()
 
                 val login = Login(username, password)
-                progressBar.visible(true)
+//                progressBar.visible(true)
                 viewModel.login(login)
             }
         }
