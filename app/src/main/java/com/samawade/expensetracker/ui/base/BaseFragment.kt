@@ -12,10 +12,12 @@ import androidx.viewbinding.ViewBinding
 import com.samawade.expensetracker.data.UserPreferences
 import com.samawade.expensetracker.data.network.RemoteDataSource
 import com.samawade.expensetracker.data.repository.BaseRepository
+import com.samawade.expensetracker.ui.auth.AuthActivity
+import com.samawade.expensetracker.ui.startNewActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
+abstract class BaseFragment<VM: BaseViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
 
     protected lateinit var userPrerences: UserPreferences
     protected lateinit var binding: B
@@ -35,6 +37,11 @@ abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: F
         lifecycleScope.launch { userPrerences.authToken.first() }
 
         return binding.root
+    }
+
+    fun logout() = lifecycleScope.launch{
+        userPrerences.clear()
+        requireActivity().startNewActivity(AuthActivity::class.java)
     }
 
     abstract fun getViewModel(): Class<VM>

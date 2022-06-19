@@ -8,11 +8,12 @@ import com.samawade.expensetracker.Model.Login
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.data.repository.AuthRepository
 import com.samawade.expensetracker.data.responses.LoginResponse
+import com.samawade.expensetracker.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
     private val repository: AuthRepository
-): ViewModel() {
+): BaseViewModel(repository) {
     private val _loginResponse: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     val loginResponse: LiveData<Resource<LoginResponse>>
         get() = _loginResponse

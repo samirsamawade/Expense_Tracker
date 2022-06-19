@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.ui.auth.LoginFragment
+import com.samawade.expensetracker.ui.base.BaseFragment
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>){
     Intent(this, activity).also {
@@ -23,6 +24,10 @@ fun View.enable(enabled: Boolean){
     isEnabled = enabled
     alpha = if(enabled) 1f else 0.5f
 }
+
+//fun View.dialog(){
+//
+//}
 
 fun View.snackbr(message: String, action: (()-> Unit)? = null){
     val snackbar = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
@@ -45,7 +50,7 @@ fun Fragment.handleApiError(
                 requireView().snackbr("Incorrect username or password ")
             }
             else {
-                //@todo perform logout operation here
+                (this as BaseFragment<*,*,*>).logout()
             }
         }
         else -> {
