@@ -21,6 +21,12 @@ class UserPreferences(
     val authToken: Flow<String?>
         get() = dataStore.data.map { preferences->
             preferences[KEY_TOKEN]
+//            preferences[KEY_ID]
+        }
+
+    val authId: Flow<String?>
+        get() = dataStore.data.map { preferences->
+//            preferences[KEY_TOKEN]
             preferences[KEY_ID]
         }
 

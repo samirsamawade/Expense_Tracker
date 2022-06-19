@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/grey_5"
-    tools:context=".ui.fragments.ProfileFragment">
+    tools:context=".ui.user.ProfileFragment">
 
 
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
-                android:text="Samir Mukhtar"
+                android:text="Samir Samawade"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@color/grey_90" />
 

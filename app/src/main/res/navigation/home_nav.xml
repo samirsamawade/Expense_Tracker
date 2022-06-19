@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.samawade.expensetracker.ui.fragments.ProfileFragment"
+        android:name="com.samawade.expensetracker.ui.user.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
