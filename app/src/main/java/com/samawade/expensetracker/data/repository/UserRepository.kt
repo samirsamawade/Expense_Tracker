@@ -7,14 +7,19 @@ import com.samawade.expensetracker.data.network.UserApi
 
 class UserRepository(
     private val api: UserApi
-//    private val preferences: UserPreferences
 ):BaseRepository() {
 
     suspend fun getUser(userId: String) = safeApiCall {
         api.getUser(userId)
     }
 
-//    suspend fun saveAuthToken(token: String, id: String){
-//        preferences.saveAuthToken(token, id)
-//    }
+    suspend fun getStatement(userId: String) = safeApiCall {
+        api.getStatement(userId)
+    }
+
+    suspend fun getAllStatements(userId: String) = safeApiCall {
+        api.getAllStatements(userId)
+    }
+
+
 }
