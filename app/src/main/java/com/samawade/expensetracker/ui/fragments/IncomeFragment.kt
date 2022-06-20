@@ -20,6 +20,7 @@ import com.samawade.expensetracker.ui.base.BaseFragment
 import com.samawade.expensetracker.ui.enable
 import com.samawade.expensetracker.ui.handleApiError
 import com.samawade.expensetracker.ui.user.UserViewModel
+import com.samawade.expensetracker.ui.visible
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -60,11 +61,13 @@ class IncomeFragment : BaseFragment<UserViewModel, FragmentIncomeBinding, UserRe
     private fun updateAdapter(statements: Statements) {
 
 //        statements?.let {
-        if (statements.info.isEmpty()){
-            binding.incomeGroup.enable(false)
-            binding.emptyStateLayout.enable(true)
+        if (statements.info.filter { it.type == "income" }.isEmpty()){
+            binding.incomeGroup.visible(false)
+            binding.emptyStateLayout.visible(true)
         }
-        myAdapter.differ.submitList(statements.info.sortedBy { it._id }.reversed().toList())
+        myAdapter.differ.submitList(statements.info.sortedBy { it._id }.reversed().filter {
+            it.type == "income"
+        }.toList())
 //        }
     }
 
