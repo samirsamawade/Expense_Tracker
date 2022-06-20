@@ -1,5 +1,7 @@
 package com.samawade.expensetracker.data.responses
 
+import java.io.Serializable
+
 data class Info(
     val __v: Int,
     val _id: String,
@@ -13,4 +15,4 @@ data class Info(
     val runBalance: Int,
     val type: String,
     val updatedAt: String
-)
+): Serializable

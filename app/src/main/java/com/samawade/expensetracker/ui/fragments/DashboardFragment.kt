@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samawade.expensetracker.R
 import com.samawade.expensetracker.adapter.Adapter
@@ -33,12 +34,22 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
 
         setRecyclerView()
 
+        myAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("transaction", it)
+            }
+            findNavController().navigate(
+                R.id.action_dashboardFragment_to_transactionDetailFragment,
+                bundle
+            )
+        }
+
         val id = runBlocking { userPrerences.authId.first() }
         viewModel.getStatement(id!!)
         viewModel.getAllStatements(id!!)
 
         viewModel.statement.observe(viewLifecycleOwner, Observer {
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     updateUI(it.value)
                 }
@@ -48,7 +59,7 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
         })
 
         viewModel.allStatements.observe(viewLifecycleOwner, Observer {
-            when(it){
+            when (it) {
                 is Resource.Success -> {
 
                     Log.d("Xaami", it.value.toString())
@@ -62,19 +73,19 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
     private fun updateAdapter(statements: Statements) {
 
 //        statements?.let {
-            if (statements.info.isEmpty()){
-                binding.dashboardGroup.visible(false)
-                binding.emptyStateLayout.visible(true)
-            }
+        if (statements.info.isEmpty()) {
+            binding.dashboardGroup.visible(false)
+            binding.emptyStateLayout.visible(true)
+        }
         myAdapter.differ.submitList(statements.info.sortedBy { it._id }.reversed().toList())
 //        }
     }
 
     private fun updateUI(statement: Statement) {
-        with(binding){
-            textBalance.text = "$"+statement.balance
-            textIncome.text = "$"+statement.userincome
-            textExpense.text = "$"+statement.userExpense
+        with(binding) {
+            textBalance.text = "$" + statement.balance
+            textIncome.text = "$" + statement.userincome
+            textExpense.text = "$" + statement.userExpense
         }
     }
 
@@ -92,7 +103,7 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
         return UserRepository(api)
     }
 
-    fun setRecyclerView(){
+    fun setRecyclerView() {
         binding.recyclerView.adapter = myAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
     }

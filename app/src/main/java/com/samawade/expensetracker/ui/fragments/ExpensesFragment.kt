@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samawade.expensetracker.R
 import com.samawade.expensetracker.adapter.Adapter
@@ -29,7 +30,18 @@ class ExpensesFragment : BaseFragment<UserViewModel, FragmentExpensesBinding, Us
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setRecyclerView()
+
+        myAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("transaction", it)
+            }
+            findNavController().navigate(
+                R.id.action_expensesFragment_to_transactionDetailFragment,
+                bundle
+            )
+        }
 
         val id = runBlocking { userPrerences.authId.first() }
         viewModel.getStatement(id!!)
