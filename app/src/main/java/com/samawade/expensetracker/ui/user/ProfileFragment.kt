@@ -16,6 +16,7 @@ import com.samawade.expensetracker.data.repository.UserRepository
 import com.samawade.expensetracker.data.responses.Users
 import com.samawade.expensetracker.databinding.FragmentProfileBinding
 import com.samawade.expensetracker.ui.base.BaseFragment
+import com.samawade.expensetracker.ui.handleApiError
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -33,6 +34,7 @@ class ProfileFragment : BaseFragment<UserViewModel, FragmentProfileBinding, User
                 is Resource.Success -> {
                     updateUI(it.value)
                 }
+                is Resource.Failure -> handleApiError(it)
             }
         })
 
