@@ -59,11 +59,9 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
     }
 
     private fun updateAdapter(statements: Statements) {
-        Log.d("Xaam", statements.info.toString())
 
 //        statements?.let {
             if (statements.info.isEmpty()){
-                Log.d("Xaama", statements.info.toString())
                 binding.dashboardGroup.enable(false)
                 binding.emptyStateLayout.enable(true)
             }
@@ -94,7 +92,6 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
     }
 
     fun setRecyclerView(){
-
         binding.recyclerView.adapter = myAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
     }
