@@ -20,6 +20,7 @@ import com.samawade.expensetracker.ui.base.BaseFragment
 import com.samawade.expensetracker.ui.enable
 import com.samawade.expensetracker.ui.handleApiError
 import com.samawade.expensetracker.ui.user.UserViewModel
+import com.samawade.expensetracker.ui.visible
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -62,8 +63,8 @@ class DashboardFragment : BaseFragment<UserViewModel, FragmentDashboardBinding, 
 
 //        statements?.let {
             if (statements.info.isEmpty()){
-                binding.dashboardGroup.enable(false)
-                binding.emptyStateLayout.enable(true)
+                binding.dashboardGroup.visible(false)
+                binding.emptyStateLayout.visible(true)
             }
         myAdapter.differ.submitList(statements.info.sortedBy { it._id }.reversed().toList())
 //        }
