@@ -1,13 +1,14 @@
 package com.samawade.expensetracker.data.repository
 
 import com.samawade.expensetracker.Model.Login
+import com.samawade.expensetracker.Model.Transaction
 import com.samawade.expensetracker.data.UserPreferences
 import com.samawade.expensetracker.data.network.AuthApi
 import com.samawade.expensetracker.data.network.UserApi
 
 class UserRepository(
     private val api: UserApi
-):BaseRepository() {
+) : BaseRepository() {
 
     suspend fun getUser(userId: String) = safeApiCall {
         api.getUser(userId)
@@ -21,6 +22,10 @@ class UserRepository(
         api.getAllStatements(userId)
     }
 
+
+    suspend fun transaction(transaction: Transaction) = safeApiCall {
+        api.transaction(transaction)
+    }
 
     suspend fun deleteTransaction(transactionId: String) = safeApiCall {
         api.deleteTransaction(transactionId)

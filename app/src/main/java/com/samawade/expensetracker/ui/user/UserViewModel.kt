@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.samawade.expensetracker.Model.Transaction
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.data.repository.UserRepository
-import com.samawade.expensetracker.data.responses.Statement
-import com.samawade.expensetracker.data.responses.Statements
-import com.samawade.expensetracker.data.responses.TransactionResponse
-import com.samawade.expensetracker.data.responses.Users
+import com.samawade.expensetracker.data.responses.*
 import com.samawade.expensetracker.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -50,6 +48,10 @@ class UserViewModel(
     }
 
 
+    fun transaction(transaction: Transaction) = viewModelScope.launch {
+        _transaction.value = Resource.Loading
+        _transaction.value = repository.transaction(transaction)
+    }
 
     fun deleteTransaction(transactionId: String) = viewModelScope.launch {
         _transaction.value = Resource.Loading

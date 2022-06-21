@@ -36,7 +36,11 @@
         android:id="@+id/transactionsFragment"
         android:name="com.samawade.expensetracker.ui.fragments.TransactionsFragment"
         android:label="fragment_transactions"
-        tools:layout="@layout/fragment_transactions" />
+        tools:layout="@layout/fragment_transactions" >
+        <action
+            android:id="@+id/action_transactionsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transactionDetailFragment"
         android:name="com.samawade.expensetracker.ui.fragments.TransactionDetailFragment"
