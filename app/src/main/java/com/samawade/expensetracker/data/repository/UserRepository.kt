@@ -22,4 +22,9 @@ class UserRepository(
     }
 
 
+    suspend fun deleteTransaction(transactionId: String) = safeApiCall {
+        api.deleteTransaction(transactionId)
+    }
+
+
 }
