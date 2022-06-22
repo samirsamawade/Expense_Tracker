@@ -53,6 +53,11 @@ class UserViewModel(
         _transaction.value = repository.transaction(transaction)
     }
 
+    fun updateTransaction(transactionId: String, transaction: Transaction) = viewModelScope.launch {
+        _transaction.value = Resource.Loading
+        _transaction.value = repository.updateTransaction(transactionId, transaction)
+    }
+
     fun deleteTransaction(transactionId: String) = viewModelScope.launch {
         _transaction.value = Resource.Loading
         _transaction.value = repository.deleteTransaction(transactionId)

@@ -12,10 +12,7 @@ interface UserApi {
         @Path("userID") userId: String
     ): Users
 
-    @POST("transection")
-    suspend fun transaction(
-        @Body transaction: Transaction
-    ): TransactionResponse
+
 
     @GET("statements/info/{userID}")
     suspend fun getStatement(
@@ -27,8 +24,16 @@ interface UserApi {
         @Path("userID") userId: String
     ): Statements
 
+    @POST("transection")
+    suspend fun transaction(
+        @Body transaction: Transaction
+    ): TransactionResponse
 
-
+    @PUT("transection/{transactionId}")
+    suspend fun updateTransaction(
+        @Path("transactionId") transactionId: String,
+        @Body transaction: Transaction
+    ): TransactionResponse
 
     @DELETE("transection/{transactionId}")
     suspend fun deleteTransaction(

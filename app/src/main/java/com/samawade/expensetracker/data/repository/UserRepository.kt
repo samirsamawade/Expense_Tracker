@@ -27,6 +27,10 @@ class UserRepository(
         api.transaction(transaction)
     }
 
+    suspend fun updateTransaction(transactionId: String, transaction: Transaction) = safeApiCall {
+        api.updateTransaction(transactionId, transaction)
+    }
+
     suspend fun deleteTransaction(transactionId: String) = safeApiCall {
         api.deleteTransaction(transactionId)
     }
