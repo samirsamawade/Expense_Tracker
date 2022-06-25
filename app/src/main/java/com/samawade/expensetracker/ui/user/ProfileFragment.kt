@@ -55,6 +55,32 @@ class ProfileFragment : BaseFragment<UserViewModel, FragmentProfileBinding, User
                 dialog.show()
             }
         }
+
+        binding.deleteAccount.setOnClickListener {
+            val dialog = AlertDialog.Builder(requireContext())
+            dialog.apply {
+                setTitle("Delete Account")
+                setMessage("Are you sure you want to delete this Account?")
+                setNegativeButton("No"){negative, _ ->
+                    negative.dismiss()
+                }
+                setPositiveButton("Yes"){positive, _ ->
+                    Log.d("item", "Item clicked")
+                    viewModel.deleteAccount(id!!)
+                    viewModel.user.observe(viewLifecycleOwner, Observer {
+                        when(it){
+                            is Resource.Success -> {
+                                logout()
+                            }
+                            is Resource.Failure -> handleApiError(it)
+                        }
+                    })
+                    positive.dismiss()
+                }
+                dialog.create()
+                dialog.show()
+            }
+        }
     }
 
     private fun updateUI(user: Users) {

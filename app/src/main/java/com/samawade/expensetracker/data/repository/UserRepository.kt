@@ -15,6 +15,10 @@ class UserRepository(
         api.getUser(userId)
     }
 
+    suspend fun deleteAccount(userId: String) = safeApiCall {
+        api.deleteAccount(userId)
+    }
+
 
     suspend fun getStatement(userId: String) = safeApiCall {
         api.getStatement(userId)

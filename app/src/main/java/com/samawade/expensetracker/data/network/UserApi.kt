@@ -13,6 +13,12 @@ interface UserApi {
     ): Users
 
 
+    @DELETE("users/{userID}")
+    suspend fun deleteAccount(
+        @Path("userID") userId: String
+    ): Users
+
+
 
     @GET("statements/info/{userID}")
     suspend fun getStatement(

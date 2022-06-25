@@ -37,6 +37,10 @@ class UserViewModel(
         _user.value = repository.getUser(userId)
     }
 
+    fun deleteAccount(userId: String) = viewModelScope.launch {
+        _user.value = Resource.Loading
+        _user.value = repository.deleteAccount(userId)
+    }
 
 
     fun getStatement(userId: String) = viewModelScope.launch {
