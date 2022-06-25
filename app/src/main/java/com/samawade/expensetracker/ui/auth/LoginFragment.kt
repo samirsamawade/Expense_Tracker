@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.samawade.expensetracker.Model.Login
+import com.samawade.expensetracker.R
 import com.samawade.expensetracker.databinding.FragmentLoginBinding
 import com.samawade.expensetracker.data.network.AuthApi
 import com.samawade.expensetracker.data.network.Resource
@@ -38,13 +40,18 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             }
         })
 
-        binding.apply {
+        with(binding) {
 
             editTextPass.addTextChangedListener {
                 val username = editTextUsername.text.toString().trim()
                 buttonLogin.enable(username.isNotEmpty() && it.toString().trim().isNotEmpty())
             }
 
+            tvRegister.setOnClickListener{
+                findNavController().navigate(
+                    R.id.action_loginFragment_to_registerFragment
+                )
+            }
             buttonLogin.setOnClickListener {
                 login()
             }

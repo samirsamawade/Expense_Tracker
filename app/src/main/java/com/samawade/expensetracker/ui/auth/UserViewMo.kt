@@ -7,26 +7,24 @@ import androidx.lifecycle.viewModelScope
 import com.samawade.expensetracker.Model.Login
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.data.repository.AuthRepository
+import com.samawade.expensetracker.data.repository.UserRepo
 import com.samawade.expensetracker.data.responses.LoginResponse
 import com.samawade.expensetracker.data.responses.UserResponse
 import com.samawade.expensetracker.data.responses.Users
 import com.samawade.expensetracker.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class AuthViewModel(
-    private val repository: AuthRepository
+class UserViewMo(
+    private val repository: UserRepo
 ): BaseViewModel(repository) {
 
-    private val _loginResponse: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    val loginResponse: LiveData<Resource<LoginResponse>>
-        get() = _loginResponse
+    private val _userResponse: MutableLiveData<Resource<UserResponse>> = MutableLiveData()
+    val userResponse: LiveData<Resource<UserResponse>>
+        get() = _userResponse
 
-    fun login(login: Login ) = viewModelScope.launch {
-        _loginResponse.value = Resource.Loading
-        _loginResponse.value = repository.login(login)
+    fun registerUser(user: Users) = viewModelScope.launch {
+        _userResponse.value = Resource.Loading
+        _userResponse.value = repository.registerUser(user)
     }
 
-    suspend fun saveAuthToken(token: String, id: String) {
-        repository.saveAuthToken(token, id)
-    }
 }

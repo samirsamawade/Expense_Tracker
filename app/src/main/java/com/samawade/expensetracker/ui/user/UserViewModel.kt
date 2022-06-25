@@ -37,6 +37,8 @@ class UserViewModel(
         _user.value = repository.getUser(userId)
     }
 
+
+
     fun getStatement(userId: String) = viewModelScope.launch {
         _statement.value = Resource.Loading
         _statement.value = repository.getStatement(userId)
