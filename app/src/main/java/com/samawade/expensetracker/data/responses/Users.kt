@@ -6,3 +6,9 @@ data class Users(
     val phone: String,
     val username: String
 )
+
+data class User(
+    val name: String,
+    val phone: String,
+    val username: String
+)

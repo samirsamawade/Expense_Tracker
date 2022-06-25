@@ -1,5 +1,6 @@
 package com.samawade.expensetracker.ui.user
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,20 +8,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.samawade.expensetracker.R
 import com.samawade.expensetracker.data.network.Resource
 import com.samawade.expensetracker.data.network.UserApi
 import com.samawade.expensetracker.data.repository.UserRepository
+import com.samawade.expensetracker.data.responses.User
 import com.samawade.expensetracker.data.responses.Users
 import com.samawade.expensetracker.databinding.FragmentProfileBinding
 import com.samawade.expensetracker.ui.base.BaseFragment
 import com.samawade.expensetracker.ui.handleApiError
+import kotlinx.android.synthetic.main.dialog_update_user.view.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<UserViewModel, FragmentProfileBinding, UserRepository>() {
+    var name: String? = ""
+    var username: String? = ""
+    var phone: String? = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,10 +88,57 @@ class ProfileFragment : BaseFragment<UserViewModel, FragmentProfileBinding, User
                 dialog.show()
             }
         }
+
+        binding.updateUser.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            // Get the layout inflater
+            val inflater = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_update_user, null)
+
+            // Inflate and set the layout for the dialog
+            // Pass null as the parent view because its going in the dialog layout
+
+            builder.setView(inflater)
+                // Add action buttons
+                .setPositiveButton("Update",
+                    DialogInterface.OnClickListener { dialog, _ ->
+                        // sign in the user ...
+                        name = inflater.dialog_edit_name.text.toString()
+                        phone = inflater.dialog_edit_phone.text.toString()
+                        username = inflater.dialog_edit_username.text.toString()
+
+                        val user = User(name.toString(), phone.toString(), username.toString())
+
+                        viewModel.updateUser(id.toString(), user)
+                        viewModel.userResponse.observe(this, androidx.lifecycle.Observer {
+
+                            when(it){
+                                is Resource.Success -> {
+                                    viewModel.getUser(id!!)
+                                }
+                                is Resource.Failure -> handleApiError(it)
+                            }
+
+                        })
+                    })
+                .setNegativeButton("Cancel",
+                    DialogInterface.OnClickListener { dialog, _ ->
+                    })
+            inflater.dialog_edit_name.setText(name)
+            inflater.dialog_edit_phone.setText(phone)
+            inflater.dialog_edit_username.setText(username)
+
+            builder.create()
+            builder.show()
+        }
     }
 
     private fun updateUI(user: Users) {
         with(binding){
+
+            name = user.name!!
+            username = user.username!!
+            phone = user.phone!!
+
             tvName.text = user.name
             tvUsername.text = user.username
         }

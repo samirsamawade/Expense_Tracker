@@ -19,6 +19,11 @@ class UserViewModel(
     val user: LiveData<Resource<Users>>
         get() = _user
 
+    private val _userResponse: MutableLiveData<Resource<UserResponse>> = MutableLiveData()
+    val userResponse: LiveData<Resource<UserResponse>>
+        get() = _userResponse
+
+
     private val _statement: MutableLiveData<Resource<Statement>> = MutableLiveData()
     val statement: LiveData<Resource<Statement>>
         get() = _statement
@@ -35,6 +40,11 @@ class UserViewModel(
     fun getUser(userId: String) = viewModelScope.launch {
         _user.value = Resource.Loading
         _user.value = repository.getUser(userId)
+    }
+
+    fun updateUser(userId: String, user: User) = viewModelScope.launch {
+        _userResponse.value = Resource.Loading
+        _userResponse.value = repository.updateUser(userId, user)
     }
 
     fun deleteAccount(userId: String) = viewModelScope.launch {

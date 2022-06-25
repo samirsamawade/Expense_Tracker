@@ -69,7 +69,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/edit_account"
+                    android:id="@+id/update_user"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"

@@ -12,6 +12,11 @@ interface UserApi {
         @Path("userID") userId: String
     ): Users
 
+    @PUT("users/{userID}")
+    suspend fun updateUser(
+        @Path("userID") userId: String,
+        @Body user: User
+    ): UserResponse
 
     @DELETE("users/{userID}")
     suspend fun deleteAccount(
